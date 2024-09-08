@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotus Wireless Technologies - CSD </title>
+    <link rel="icon" type="image/x-icon" href="Images/LWT-logo.ico">
+</head>
+
+<body>
+    <h1>Welcome to Lotus Wireless Technologies India Private Limited</h1>
+    <img src="Images/LWT.jpeg" alt="Lotus" width="200px" height="100px">
+    <hr>
+    <p>
+        Greeting From <strong>Lotus Wireless!!</strong><br>
+        Thank You for using our <strong>Products and Services</strong>
+    </p>
+
+    <!-- <form action="mailto:hossain.lotuswireless@gmail.com?subject=User Registration & body=User Details" method="post" enctype="text/plain"> -->
+    <form name="submit-to-google-sheet">  
+        <table>
+            <tr>
+                <th colspan="2">User Registration</th>
+            </tr>
+            <tr>
+                <td>Person Name</td>
+                <td><input type="text" name="User_Name" placeholder="Enter Your Name"></td>
+            </tr>
+            <tr>
+                <td>Contact No</td>
+                <td><input type="number" name="Contact_No" placeholder="Enter Your Contact No"></td>
+            </tr>
+            <tr>
+                <td>Mail ID</td>
+                <td><input type="text" name="Email_Id" placeholder="Enter Your  Email ID"></td>
+            </tr>
+            <tr>
+                <td><input type="Submit" value="Submit✅"></td>
+                <td><input type="Submit" value="Cancel❌"></td>
+            </tr>
+        </table>
+    </form>
+
+    <span id="msg"></span>
+
+
+    <br>
+    <a href="http://127.0.0.1:5501/feedback1.html"><input type="Submit" value="Next ⏭️"></a></td>
+
+    <script>
+        // const scriptURL = '<SCRIPT URL>'
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyIDNS3-PrD87lgAoqiNf3Ggqc6cfK3JNruqmGdkyQHUN_xI3xEpUYm6QBsc-yX2fI/exec'
+        const form = document.forms['submit-to-google-sheet']
+
+        const msg = document.getElementById("msg")
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                msg.innerHTML = "Registration done successfully"
+                setTimeout(function(){
+                    msg.innerHTML = ""
+                }, 3000)
+                form.reset()
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+
+
+</body>
+
+</html>
